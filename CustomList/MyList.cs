@@ -6,7 +6,27 @@ using System.Threading.Tasks;
 
 namespace CustomList
 {
-    class MyList
+    public class MyList<T>  
     {
+        T value;
+        int count;
+        
+
+        public MyList(T value)
+        {
+            this.value = value;
+        }
+
+        public void Add(T value)
+        {
+
+        }
+
+        public void Remove(T value)
+        {
+
+        }
+
+       
     }
 }
