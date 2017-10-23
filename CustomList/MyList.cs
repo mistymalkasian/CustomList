@@ -9,9 +9,10 @@ namespace CustomList
 {
     public class MyList<T> : IEnumerable<T> 
     {
-        T[] List = { };
+        T[] List = new T[5];
         T value;
         int count;
+        int capacity;
         
         public MyList()
         {
@@ -27,6 +28,13 @@ namespace CustomList
         public int Count
         {
             get { return count; }
+        }
+
+        public int Capacity
+        {
+            get { return capacity; }
+
+            set { capacity = value; }
         }
 
         public T this[int index]
@@ -58,10 +66,10 @@ namespace CustomList
                 count++; 
         }
 
-        public void Remove(T value)
-        {
-            List[count] = value;
-            count--;
-        }
+        //public void Remove(T value)
+        //{
+        //    List[count] = value;
+        //    count--;
+        //}
     }
 }
