@@ -1,1 +1,6 @@
 c:\users\andrew malkasian\documents\visual studio 2015\Projects\CustomList\CustomList\bin\Debug\CustomList.exe.config
+C:\Users\Andrew Malkasian\Documents\Visual Studio 2015\Projects\CustomList\CustomList\bin\Debug\CustomList.exe
+C:\Users\Andrew Malkasian\Documents\Visual Studio 2015\Projects\CustomList\CustomList\bin\Debug\CustomList.pdb
+C:\Users\Andrew Malkasian\Documents\Visual Studio 2015\Projects\CustomList\CustomList\obj\Debug\CustomList.csprojResolveAssemblyReference.cache
+C:\Users\Andrew Malkasian\Documents\Visual Studio 2015\Projects\CustomList\CustomList\obj\Debug\CustomList.exe
+C:\Users\Andrew Malkasian\Documents\Visual Studio 2015\Projects\CustomList\CustomList\obj\Debug\CustomList.pdb

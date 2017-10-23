@@ -22,6 +22,8 @@ namespace CustomList
         {
             this.value = value;
         }
+
+
         public int Count
         {
             get { return count; }
@@ -52,12 +54,14 @@ namespace CustomList
 
         public void Add(T value)
         {
-
+            List[count] = value;
+                count++; 
         }
 
         public void Remove(T value)
         {
-
+            List[count] = value;
+            count--;
         }
     }
 }
