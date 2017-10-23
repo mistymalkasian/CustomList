@@ -57,16 +57,16 @@ namespace CustomList
         {
             if (count >= capacity/2)
             {
-                DoubleCapacity(value);
+                DoubleCapacity();
             }
 
             data[count] = value;
                 count++; 
         }
 
-        private void DoubleCapacity(T value)
+        private void DoubleCapacity()
         {
-            T[] data = new T[capacity * 2];
+            T[] newData = new T[capacity * 2];
             
             for (int i = 0; i < count; i++)
             {
