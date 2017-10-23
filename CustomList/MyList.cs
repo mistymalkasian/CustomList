@@ -27,6 +27,10 @@ namespace CustomList
 
         }
 
+        public void Count(T value)
+        {
+
+        }
        
     }
 }

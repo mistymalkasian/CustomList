@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CustomList
 {
-    class Poop
+    public class Poop
     {
     }
 }
