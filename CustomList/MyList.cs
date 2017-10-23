@@ -9,21 +9,16 @@ namespace CustomList
 {
     public class MyList<T> : IEnumerable<T> 
     {
-        T[] List = new T[5];
-        T value;
+        T[] data;
         int count;
         int capacity;
         
         public MyList()
         {
-           
+            capacity = 5;
+            data = new T[capacity];
+            count = 0;
         }
-        
-        public MyList(T value)
-        {
-            this.value = value;
-        }
-
 
         public int Count
         {
@@ -33,40 +28,55 @@ namespace CustomList
         public int Capacity
         {
             get { return capacity; }
-
-            set { capacity = value; }
         }
 
         public T this[int index]
         {
             get
             {
-                return List[index];
+                return data[index];
             }
 
             set
             {
-                List[index] = value;
+                data[index] = value;
             }
         }
 
         public IEnumerator<T> GetEnumerator()
         {
-            return ((IEnumerable<T>)List).GetEnumerator();
+            return ((IEnumerable<T>)data).GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return ((IEnumerable<T>)List).GetEnumerator();
+            yield return ((IEnumerable<T>)data).GetEnumerator();
         }
 
         public void Add(T value)
         {
-            List[count] = value;
+            if (count >= capacity/2)
+            {
+                DoubleCapacity(value);
+            }
+
+            data[count] = value;
                 count++; 
         }
 
-        //public void Remove(T value)
+        private void DoubleCapacity(T value)
+        {
+            T[] data = new T[capacity * 2];
+            
+            for (int i = 0; i < count; i++)
+            {
+                
+                //add data from old array into new one.
+            } 
+        }
+
+
+        //public bool Remove(T value)
         //{
         //    List[count] = value;
         //    count--;

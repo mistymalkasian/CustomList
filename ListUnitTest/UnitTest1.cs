@@ -12,13 +12,13 @@ namespace ListUnitTest
         {
             //Arrange
             MyList<int> newList = new MyList<int>();
-            int result = 5;
+            int number = 5;
 
             //Act
-            newList.Add(result);
+            newList.Add(number);
 
             //Assert
-            Assert.AreEqual(result, newList[0]);
+            Assert.AreEqual(number, newList[0]);
         }
 
         [TestMethod]
