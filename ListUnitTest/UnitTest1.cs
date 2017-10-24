@@ -122,57 +122,67 @@ namespace ListUnitTest
             //Act
             newList.Add(Trollface);
             newList.Add(Doge);
+           
 
             //Assert
             Assert.AreEqual(newList.Count, 2);
         }
 
-        //[TestMethod]
-        //public void Add_List_AddsListToList()
-        //{
-        //    //Arrange
-        //    MyList<MyList<int>> newList1 = new MyList<MyList<int>>();
-        //    MyList<MyList<int>> newList2 = new MyList<MyList<int>>();
+        [TestMethod]
+        public void Add_List_AddsListToList()
+        {
+            //Arrange
+            MyList<MyList<int>> newList1 = new MyList<MyList<int>>();
+            MyList<int> newList2 = new MyList<int>();
 
-        //    //Act
-        //    newList1.Add(1);
-        //    newList2.Add(newList1);
+            //Act
+            newList2.Add(1);
+            newList2.Add(2);
+            newList2.Add(3);
+            newList1.Add(newList2);
 
-        //    //Assert
-        //    Assert.AreEqual(newList2[0], newList1);
-        //}
+            //Assert
+            Assert.AreEqual(newList1[0], newList2);
+        }
 
-        //[TestMethod]
-        //public void Add_LongerList_AddsLongerListToList()
-        //{
-        //    //Arrange
-        //    MyList<MyList<int>> newList1 = new MyList<MyList<int>>(1, 2, 3, 4, 5);
-        //    MyList<MyList<int>> newList2 = new MyList<MyList<int>>();
+        [TestMethod]
+        public void Add_LongerList_AddsLongerListToList()
+        {
+            //Arrange
+            MyList<int> newList1 = new MyList<int>();
+            MyList<MyList<int>> newList2 = new MyList<MyList<int>>();
 
-        //    //Act
-        //    newList1.Add(1);
-        //    newList2.Add(newList1);
+            //Act
+            newList1.Add(1);
+            newList1.Add(2);
+            newList1.Add(3);
+            newList1.Add(4);
+            newList1.Add(5);
 
-        //    //Assert
-        //    Assert.AreEqual(newList2[5], newList1);
-        //}
+            newList2.Add(newList1);
 
-        //[TestMethod]
-        //public void Add_TwoLists_AddsTwoListsToList()
-        //{
-        //    //Arrange
-        //    MyList<MyList<int>> newList1 = new MyList<MyList<int>>(1);
-        //    MyList<MyList<int>> newList2 = new MyList<MyList<int>>();
-        //    MyList<MyList<int>> newList3 = new MyList<MyList<int>>();
+            //Assert
+            Assert.AreEqual(newList2[0], newList1);
+        }
 
-        //    //Act
-        //    newList2.Add(newList1);
-        //    newList3.Add(newList1);
-        //    newList3.Add(newList2);
+        [TestMethod]
+        public void Add_ToEnd_AddsNumberToEndOfList()
+        {
+            //Arrange
+            MyList<int> newList1 = new MyList<int>();
 
-        //    //Assert
-        //    Assert.AreEqual(newList2[0], newList1);
-        //}
+            //Act
+            newList1.Add(1);
+            newList1.Add(2);
+            newList1.Add(3);
+            newList1.Add(4);
+            newList1.Add(5);
+
+
+            //Assert
+            Assert.AreEqual(newList1[4], 5);
+        }
+
 
         //[TestMethod]
         //public void Remove_Number_RemovesNumberFromList()
