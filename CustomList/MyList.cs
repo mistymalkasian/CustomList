@@ -97,8 +97,30 @@ namespace CustomList
         {
             for (int i = 0; i < count; i++)
             {
-               if (Compare(data[i],(value)) == true)
+                if (Compare(data[i], (value)) == false)
                 {
+                    //if the value isn't the one passed in to remove, it adds it to a new array.
+                }
+            } 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            for (int i = 0; i < count; i++)
+            {
+               if (Compare(data[i],(value)))
+                {
+                   
                     T[] newData = new T[capacity];
                     for (int j = 0; j < count; j++)
                     {
@@ -107,7 +129,7 @@ namespace CustomList
                 }
                else
                 {
-                    
+                    //throw an exception
                 }
                                 
             }
