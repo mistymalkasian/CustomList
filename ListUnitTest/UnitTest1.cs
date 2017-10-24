@@ -53,14 +53,14 @@ namespace ListUnitTest
         public void Add_Object_AddsObjectToList()
         {
             //Arrange
-            MyList<Poop> newList = new MyList<Poop>();
-            Poop Poop = new Poop();
+            MyList<Meme> newList = new MyList<Meme>();
+            Meme ConspiracyKeanu = new Meme();
 
             //Act
-            newList.Add(Poop);
+            newList.Add(ConspiracyKeanu);
 
             //Assert
-            Assert.AreEqual(Poop, newList[0]);
+            Assert.AreEqual(ConspiracyKeanu, newList[0]);
         }
 
         [TestMethod]
@@ -178,117 +178,136 @@ namespace ListUnitTest
             newList1.Add(4);
             newList1.Add(5);
 
-
             //Assert
             Assert.AreEqual(newList1[4], 5);
         }
 
 
-        //[TestMethod]
-        //public void Remove_Number_RemovesNumberFromList()
-        //{
-        //    //Arrange
-        //    MyList<int> newList = new MyList<int>(5);
+        [TestMethod]
+        public void Remove_Number_RemovesNumberFromList()
+        {
+            //Arrange
+            MyList<int> newList = new MyList<int>();
 
-        //    //Act
-        //    newList.Remove(5);
+            //Act
+            newList.Add(5);
+            newList.Remove(5);
 
-        //    //Assert
-        //    Assert.AreEqual(newList.Count, 0);
-        //}
+            //Assert
+            Assert.AreEqual(newList.Count, 0);
+        }
 
-        //[TestMethod]
-        //public void Remove_String_RemovesStringFromList()
-        //{
-        //    //Arrange
-        //    MyList<string> newList = new MyList<string>("hello");
+        [TestMethod]
+        public void Remove_NonexistentObject_ThrowsException()
+        {
 
-        //    //Act
-        //    newList.Remove("hello");
+        }
 
-        //    //Assert
-        //    Assert.AreEqual(newList.Count, 0);
-        //}
+        [TestMethod]
+        public void Remove_String_RemovesStringFromList()
+        {
+            //Arrange
+            MyList<string> newList = new MyList<string>();
 
-        //[TestMethod]
-        //public void Remove_Bool_RemovesBoolFromList()
-        //{
-        //    //Arrange
-        //    MyList<bool> newList = new MyList<bool>(true);
+            //Act
+            newList.Add("hello");
+            newList.Remove("hello");
 
-        //    //Act
-        //    newList.Remove(true);
+            //Assert
+            Assert.AreEqual(newList.Count, 0);
+        }
 
-        //    //Assert
-        //    Assert.AreEqual(newList.Count, 0);
-        //}
+        [TestMethod]
+        public void Remove_Bool_RemovesBoolFromList()
+        {
+            //Arrange
+            MyList<bool> newList = new MyList<bool>();
 
-        //[TestMethod]
-        //public void Remove_Object_RemovesObjectFromList()
-        //{
-        //    //Arrange
-        //    Poop SteamingPoop = new Poop();
-        //    MyList<Poop> newList = new MyList<Poop>(SteamingPoop);
+            //Act
+            newList.Add(true);
+            newList.Remove(true);
 
-        //    //Act
-        //    newList.Remove(SteamingPoop);
+            //Assert
+            Assert.AreEqual(newList.Count, 0);
+        }
 
-        //    //Assert
-        //    Assert.AreEqual(newList.Count, 0);
-        //}
+        [TestMethod]
+        public void Remove_Object_RemovesObjectFromList()
+        {
+            //Arrange
+            Meme FirstWorldProblems = new Meme();
+            MyList<Meme> newList = new MyList<Meme>();
 
-        //[TestMethod]
-        //public void Remove_TwoNumbers_RemovesTwoNumbersFromList()
-        //{
-        //    //Arrange
-        //    MyList<int> newList = new MyList<int>(5, 3);
+            //Act
+            newList.Add(FirstWorldProblems);
+            newList.Remove(FirstWorldProblems);
 
-        //    //Act
-        //    newList.Remove(3);
+            //Assert
+            Assert.AreEqual(newList.Count, 0);
+        }
 
-        //    //Assert
-        //    Assert.AreEqual(newList.Count, 1);
-        //}
+        [TestMethod]
+        public void Remove_FromEnd_RemovesNumberFromEndOfList()
+        {
+            //Arrange
+            MyList<int> newList = new MyList<int>();
 
-        //[TestMethod]
-        //public void Remove_TwoStrings_RemovesTwoStringsFromList()
-        //{
-        //    //Arrange
-        //    MyList<string> newList = new MyList<string>("hello", "world");
+            //Act
+            newList.Add(5);
+            newList.Add(3);
+            newList.Remove(3);
 
-        //    //Act
-        //    newList.Remove("world");
+            //Assert
+            Assert.AreEqual(newList.Count, 1);
+        }
 
-        //    //Assert
-        //    Assert.AreEqual(newList.Count, 1);
-        //}
+        [TestMethod]
+        public void Remove_TwoStrings_RemovesTwoStringsFromList()
+        {
+            //Arrange
+            MyList<string> newList = new MyList<string>();
 
-        //[TestMethod]
-        //public void Remove_TwoBools_RemovesTwoBoolsFromList()
-        //{
-        //    //Arrange
-        //    MyList<bool> newList = new MyList<bool>(true, false);
+            //Act
+            newList.Add("hello");
+            newList.Add("world");
+            newList.Remove("hello");
+            newList.Remove("world");
 
-        //    //Act
-        //    newList.Remove(true);
+            //Assert
+            Assert.AreEqual(newList.Count, 0);
+        }
 
-        //    //Assert
-        //    Assert.AreEqual(newList.Count, 1);
-        //}
+        [TestMethod]
+        public void Remove_TwoBools_RemovesTwoBoolsFromList()
+        {
+            //Arrange
+            MyList<bool> newList = new MyList<bool>();
 
-        //[TestMethod]
-        //public void Remove_TwoObjects_RemovesTwoObjectsFromList()
-        //{
-        //    //Arrange
-        //    Meme BadLuckBrian = new Meme();
-        //    Meme DatBoi = new Meme();
-        //    MyList<Meme> newList = new MyList<Meme>(BadLuckBrian, DatBoi);
+            //Act
+            newList.Add(true);
+            newList.Add(false);
+            newList.Remove(true);
+            newList.Remove(false);
 
-        //    //Act
-        //    newList.Remove(DatBoi);
+            //Assert
+            Assert.AreEqual(newList.Count, 0);
+        }
 
-        //    //Assert
-        //    Assert.AreEqual(newList.Count, 1);
-        //}
+        [TestMethod]
+        public void Remove_TwoObjects_RemovesTwoObjectsFromList()
+        {
+            //Arrange
+            Meme BadLuckBrian = new Meme();
+            Meme DatBoi = new Meme();
+            MyList<Meme> newList = new MyList<Meme>();
+
+            //Act
+            newList.Add(BadLuckBrian);
+            newList.Add(DatBoi);
+            newList.Remove(DatBoi);
+            newList.Remove(BadLuckBrian);
+            //Assert
+            Assert.AreEqual(newList.Count, 0);
+        }
     }
 }
