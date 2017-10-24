@@ -197,11 +197,18 @@ namespace ListUnitTest
             Assert.AreEqual(newList.Count, 0);
         }
 
-        [TestMethod]
-        public void Remove_NonexistentObject_ThrowsException()
-        {
+        //[TestMethod]
+        //public void Remove_NonexistentObject_ThrowsException()
+        //{
+        //    //Arrange
+        //    MyList<int> newList = new MyList<int>();
 
-        }
+        //    //Act
+        //    newList.Remove(10);
+
+        //    //Assert
+        //    Assert;
+        //}
 
         [TestMethod]
         public void Remove_String_RemovesStringFromList()

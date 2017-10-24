@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CustomList
 {
-    public class MyList<T> : IEnumerable<T> 
+    public class MyList<T> : IEnumerable<T>, IComparable<T> 
     {
         T[] data;
         int count;
@@ -35,6 +35,15 @@ namespace CustomList
             get
             {
                 return data[index];
+
+                try
+                {
+                    //if the index does not exist in the list
+                }
+                catch(Exception)
+                {
+                    throw new System.ArgumentException("That index does not exist in this list");
+                }
             }
 
             set
@@ -51,6 +60,16 @@ namespace CustomList
         IEnumerator IEnumerable.GetEnumerator()
         {
             yield return ((IEnumerable<T>)data).GetEnumerator();
+        }
+
+        int IComparable<T>.CompareTo(T other)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool Compare<T>(T x, T y)
+        {
+            return EqualityComparer<T>.Default.Equals(x, y);
         }
 
         public void Add(T value)
@@ -74,11 +93,32 @@ namespace CustomList
             data = newData;
         }
 
+        public void Remove(T value)
+        {
+            for (int i = 0; i < count; i++)
+            {
+               if (Compare(data[i],(value)) == true)
+                {
+                    T[] newData = new T[capacity];
+                    for (int j = 0; j < count; j++)
+                    {
+                        newData[j] = data[j];
+                    }
+                }
+               else
+                {
+                    
+                }
+                                
+            }
 
-        //public bool Remove(T value)
-        //{
-        //    List[count] = value;
-        //    count--;
-        //}
+
+            //for (int i = count - 1; i >= 0; i--)
+            //{
+            //    data[i] = data[i - 1];
+            //}
+        }
+
+        
     }
 }

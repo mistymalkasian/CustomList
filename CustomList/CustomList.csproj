@@ -45,7 +45,6 @@
   <ItemGroup>
     <Compile Include="Meme.cs" />
     <Compile Include="MyList.cs" />
-    <Compile Include="Poop.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
