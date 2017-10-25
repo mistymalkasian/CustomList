@@ -32,7 +32,7 @@ namespace ListUnitTest
             newList.Add(result);
 
             //Assert
-            Assert.AreEqual(result, newList[0]);            
+            Assert.AreEqual(result, newList[0]);
         }
 
         [TestMethod]
@@ -122,7 +122,7 @@ namespace ListUnitTest
             //Act
             newList.Add(Trollface);
             newList.Add(Doge);
-           
+
 
             //Assert
             Assert.AreEqual(newList.Count, 2);
@@ -316,5 +316,41 @@ namespace ListUnitTest
             //Assert
             Assert.AreEqual(newList.Count, 0);
         }
+
+        //[TestMethod]
+        //public void Return_String_ReturnsStringifiedInt()
+        //{
+        //    //Arrange
+        //    MyList<int> newList = new MyList<int>();
+
+        //    //Act
+        //    newList.Add(1);
+        //    newList.Add(2);
+
+        //    newList.ToString();
+
+        //    //Assert
+        //    Assert.AreEqual(newList[0], "1 2");
+        //}
+
+        [TestMethod]
+        public void Zip_TwoLists_ZipsTwoListsTogether()
+        {
+            //Arrange
+            MyList<int> list1 = new MyList<int>() { 1, 3, 5}; 
+            MyList<int> list2 = new MyList<int>() { 2, 4, 6 };
+            MyList<int> MasterList = new MyList<int>() { };
+            MyList<int> expectedResult = new MyList<int>() { 1, 2, 3, 4, 5, 6 };
+
+
+            //Act
+            MasterList.Zip(list1, list2);
+
+            //Assert
+            Assert.AreEqual(expectedResult, MasterList);
+
+        }
+
+
     }
 }

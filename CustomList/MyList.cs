@@ -98,11 +98,12 @@ namespace CustomList
         {
             newData = new T[capacity];
 
-            for (int i = 0; i < count; i++)
+          
+            for (int i = 0; i < Count; i++)
             {
                 if (Compare(data[i], (value)) == false)
                 {
-                    AddToNewData(data, newData);
+                    AddToNewArray(data, newData);
                 }
                 else
                 {
@@ -113,7 +114,7 @@ namespace CustomList
             data = newData;
         }
 
-        private void AddToNewData(T[] data, T[] newData)
+        private void AddToNewArray(T[] data, T[] newData)
         {
          for (int j = 0; j < count; j++)
           {
@@ -121,5 +122,51 @@ namespace CustomList
           }
         }
 
+        //public override string ToString()
+        //{
+        //    //stuff and things
+        //}
+
+        //foreach (var item in data)
+           //{
+           //    return .ToString();
+           //}
+
+   //public overload operator -
+   //public overload operator +
+
+    public T[] Zip(MyList<T> list1, MyList<T> list2)
+        {
+            newData = new T[capacity];
+            
+            //SizeCheck(list1, list2);
+            for (int i = 0; i < list1.count; i++)
+            {
+                if ((list1.count + list2.count) > capacity)
+                {
+                    DoubleCapacity(newData);
+                }
+                Add(list1[i]);
+                Add(list2[i]);
+            }
+            
+            data = newData;
+            return data;
+        } 
+        
+     //private T[] SizeCheck(MyList<T> list1, MyList<T> list2)
+     //   {
+     //       if (list1.count > list2.count)
+     //       {
+     //           T[] extraIndeces = new T[capacity];
+     //           Add();
+
+     //           return extraIndeces;
+     //           //put the extra indeces on the end of the zipped lists
+     //       }                        
+     //   }
+            
+            
+                   
 }
 }
