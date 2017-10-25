@@ -265,7 +265,7 @@ namespace ListUnitTest
             newList.Remove(3);
 
             //Assert
-            Assert.AreEqual(newList.Count, 1);
+            Assert.AreEqual(newList[0], 5);
         }
 
         [TestMethod]

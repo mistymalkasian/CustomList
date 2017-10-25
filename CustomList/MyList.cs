@@ -7,12 +7,13 @@ using System.Threading.Tasks;
 
 namespace CustomList
 {
-    public class MyList<T> : IEnumerable<T>, IComparable<T> 
+    public class MyList<T> : IEnumerable<T>, IComparable<T>
     {
         T[] data;
+        T[] newData;
         int count;
         int capacity;
-        
+
         public MyList()
         {
             capacity = 5;
@@ -40,7 +41,7 @@ namespace CustomList
                 {
                     //if the index does not exist in the list
                 }
-                catch(Exception)
+                catch (Exception)
                 {
                     throw new System.ArgumentException("That index does not exist in this list");
                 }
@@ -67,25 +68,25 @@ namespace CustomList
             throw new NotImplementedException();
         }
 
-        public bool Compare<T>(T x, T y)
+        public bool Compare(T x, T y)
         {
             return EqualityComparer<T>.Default.Equals(x, y);
         }
 
         public void Add(T value)
         {
-            if (count >= capacity/2)
+            if (count >= capacity / 2)
             {
                 DoubleCapacity(data);
             }
             data[count] = value;
-            count++; 
+            count++;
         }
 
         private void DoubleCapacity(T[] data)
         {
             T[] newData = new T[capacity * 2];
-           
+
             for (int i = 0; i < count; i++)
             {
                 newData[i] = data[i];
@@ -95,52 +96,30 @@ namespace CustomList
 
         public void Remove(T value)
         {
+            newData = new T[capacity];
+
             for (int i = 0; i < count; i++)
             {
                 if (Compare(data[i], (value)) == false)
                 {
-                    //if the value isn't the one passed in to remove, it adds it to a new array.
+                    AddToNewData(data, newData);
                 }
-            } 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            for (int i = 0; i < count; i++)
-            {
-               if (Compare(data[i],(value)))
+                else
                 {
-                   
-                    T[] newData = new T[capacity];
-                    for (int j = 0; j < count; j++)
-                    {
-                        newData[j] = data[j];
-                    }
+                    count--;
+                    continue;
                 }
-               else
-                {
-                    //throw an exception
-                }
-                                
             }
-
-
-            //for (int i = count - 1; i >= 0; i--)
-            //{
-            //    data[i] = data[i - 1];
-            //}
+            data = newData;
         }
 
-        
-    }
+        private void AddToNewData(T[] data, T[] newData)
+        {
+         for (int j = 0; j < count; j++)
+          {
+             newData[j] = data[j];
+          }
+        }
+
+}
 }
