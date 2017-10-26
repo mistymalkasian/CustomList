@@ -16,7 +16,7 @@ namespace CustomList
 
         public MyList()
         {
-            capacity = 5;
+            capacity = 20;
             data = new T[capacity];
             count = 0;
         }
@@ -97,7 +97,6 @@ namespace CustomList
         public void Remove(T value)
         {
             newData = new T[capacity];
-
           
             for (int i = 0; i < Count; i++)
             {
@@ -122,51 +121,62 @@ namespace CustomList
           }
         }
 
-        //public override string ToString()
-        //{
-        //    //stuff and things
+        //    public override string ToString()
+        //    {
+        //        //stuff and things
+        //    }
+
+        //    foreach (var item in data)
+        //       {
+        //           return .ToString();
         //}
 
-        //foreach (var item in data)
-           //{
-           //    return .ToString();
-           //}
-
-   //public overload operator -
-   //public overload operator +
-
-    public T[] Zip(MyList<T> list1, MyList<T> list2)
+        public static MyList<T> operator +(MyList<T> list1, MyList<T> list2)
         {
-            newData = new T[capacity];
-            
-            //SizeCheck(list1, list2);
-            for (int i = 0; i < list1.count; i++)
-            {
-                if ((list1.count + list2.count) > capacity)
-                {
-                    DoubleCapacity(newData);
-                }
-                Add(list1[i]);
-                Add(list2[i]);
-            }
-            
-            data = newData;
-            return data;
-        } 
-        
-     //private T[] SizeCheck(MyList<T> list1, MyList<T> list2)
-     //   {
-     //       if (list1.count > list2.count)
-     //       {
-     //           T[] extraIndeces = new T[capacity];
-     //           Add();
+            MyList<T> AddedList = new MyList<T>();
 
-     //           return extraIndeces;
-     //           //put the extra indeces on the end of the zipped lists
-     //       }                        
-     //   }
+            AddedList.count = list1.count + list2.count;
             
-            
-                   
-}
+            for (int i = 0; i < AddedList.count; i++)
+            {
+                list1[i] = AddedList[i];
+
+                for (int j = 0; j < AddedList.count; j++)
+                {
+                    list2[j] = AddedList[i + 1];
+                }
+            }
+            return AddedList;
+        }
+
+        public static MyList<T> operator - (MyList<T> list1, MyList<T> list2)
+        {
+            return list1;
+        }
+
+        public MyList<T> Zip(MyList<T> list1, MyList<T> list2)
+
+       {
+            MyList<T> zipList = new MyList<T>();
+           
+            for (int i = 0; i < list1.count; i++)         
+            {
+                zipList.Add(list1[i]);
+                zipList.Add(list2[i]);
+            }
+            return zipList;
+        }
+
+        //private T[] SizeCheck(MyList<T> list1, MyList<T> list2)
+        //{
+        //    if (list1.count > list2.count)
+        //    {
+        //        list1 = firstList;
+        //    }
+        //    else if (list2.count > list1.count)
+        //    {
+        //        list2 = firstList;
+        //    }
+        //}
+    }
 }

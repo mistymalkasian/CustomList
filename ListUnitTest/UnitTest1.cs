@@ -272,11 +272,9 @@ namespace ListUnitTest
         public void Remove_TwoStrings_RemovesTwoStringsFromList()
         {
             //Arrange
-            MyList<string> newList = new MyList<string>();
-
-            //Act
-            newList.Add("hello");
-            newList.Add("world");
+            MyList<string> newList = new MyList<string>() {"hello", "world" };
+           
+            //Act           
             newList.Remove("hello");
             newList.Remove("world");
 
@@ -317,40 +315,69 @@ namespace ListUnitTest
             Assert.AreEqual(newList.Count, 0);
         }
 
-        //[TestMethod]
-        //public void Return_String_ReturnsStringifiedInt()
-        //{
-        //    //Arrange
-        //    MyList<int> newList = new MyList<int>();
+        [TestMethod]
+        public void Return_String_ReturnsStringifiedInt()
+        {
+            //Arrange
+            MyList<int> newList = new MyList<int>();
 
-        //    //Act
-        //    newList.Add(1);
-        //    newList.Add(2);
+            //Act
+            newList.Add(1);
+            newList.Add(2);
 
-        //    newList.ToString();
+            newList.ToString();
 
-        //    //Assert
-        //    Assert.AreEqual(newList[0], "1 2");
-        //}
+            //Assert
+            Assert.AreEqual(newList[0], "1 2");
+        }
+
+        //OTHER TOSTRING TESTS HERE
+
+        [TestMethod]
+        public void Add_Operator_AddTwoLists()
+        {
+            //Arrange
+            MyList<int> list1 = new MyList<int>() { 1, 2, 3 };
+            MyList<int> list2 = new MyList<int>() { 4, 5, 6 };
+            MyList<int> expectedResult = new MyList<int> { 1, 2, 3, 4, 5, 6 };
+
+            //Act
+            MyList<int> actualResult = list1 + list2;
+
+            //Assert
+            Assert.AreEqual(expectedResult[3], actualResult[3]);
+        }
 
         [TestMethod]
         public void Zip_TwoLists_ZipsTwoListsTogether()
         {
             //Arrange
-            MyList<int> list1 = new MyList<int>() { 1, 3, 5}; 
+            MyList<int> list1 = new MyList<int>() { 1, 3, 5 }; 
             MyList<int> list2 = new MyList<int>() { 2, 4, 6 };
             MyList<int> MasterList = new MyList<int>() { };
             MyList<int> expectedResult = new MyList<int>() { 1, 2, 3, 4, 5, 6 };
-
-
-            //Act
-            MasterList.Zip(list1, list2);
+             
+            //Act            
+            MyList<int> actualResult = MasterList.Zip(list1, list2);
 
             //Assert
-            Assert.AreEqual(expectedResult, MasterList);
-
+            Assert.AreEqual(expectedResult[4], actualResult[4]);
         }
 
+        [TestMethod]
+        public void Zip_TwoUnequalLists_ZipsTwoUnequalListsTogether()
+        {
+            //Arrange
+            MyList<int> list1 = new MyList<int>() { 1, 3, 5 };
+            MyList<int> list2 = new MyList<int>() { 2, 4, 6, 7, 8, 9 };
+            MyList<int> MasterList = new MyList<int>() { };
+            MyList<int> expectedResult = new MyList<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
 
+            //Act            
+            MyList<int> actualResult = MasterList.Zip(list1, list2);
+
+            //Assert
+            Assert.AreEqual(expectedResult[6], actualResult[6]);
+        }
     }
 }
