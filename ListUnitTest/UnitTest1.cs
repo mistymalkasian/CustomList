@@ -319,16 +319,13 @@ namespace ListUnitTest
         public void Return_String_ReturnsStringifiedInt()
         {
             //Arrange
-            MyList<int> newList = new MyList<int>();
+            MyList<int> newList = new MyList<int>() { 1, 2, 3 };
 
             //Act
-            newList.Add(1);
-            newList.Add(2);
-
             newList.ToString();
 
             //Assert
-            Assert.AreEqual(newList[0], "1 2");
+            Assert.AreEqual(newList[0], "1");
         }
 
         //OTHER TOSTRING TESTS HERE
@@ -370,14 +367,14 @@ namespace ListUnitTest
             //Arrange
             MyList<int> list1 = new MyList<int>() { 1, 2, 3, 4, 5, 6 };
             MyList<int> list2 = new MyList<int>() { 4, 5, 6 };
-            MyList<int> expectedResult = new MyList<int> { 1, 2, 3 };
+            //MyList<int> expectedResult = new MyList<int> { 1, 2, 3 };
 
             //Act
+            int expectedResult = 3;
             MyList<int> actualResult = list1 - list2;
 
-
             //Assert
-            Assert.AreEqual(expectedResult[3], actualResult[3]);
+            Assert.AreEqual(expectedResult, actualResult[3]);
 
         }
 

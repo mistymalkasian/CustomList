@@ -36,15 +36,6 @@ namespace CustomList
             get
             {
                 return data[index];
-
-                try
-                {
-                    //if the index does not exist in the list
-                }
-                catch (Exception)
-                {
-                    throw new System.ArgumentException("That index does not exist in this list");
-                }
             }
 
             set
@@ -120,16 +111,16 @@ namespace CustomList
              newData[j] = data[j];
           }
         }
+        public override string ToString()
+        {
+            StringBuilder stringBuilder = new StringBuilder();
 
-        //    public override string ToString()
-        //    {
-        //        //stuff and things
-        //    }
-
-        //    foreach (var item in data)
-        //       {
-        //           return .ToString();
-        //}
+            foreach (T value in data)
+            {
+                string concatenated = string.Join(",", data);
+                stringBuilder.AppendLine(value);
+            }   
+        }
 
         public static MyList<T> operator +(MyList<T> list1, MyList<T> list2)
         {
@@ -151,9 +142,29 @@ namespace CustomList
             return AddedList;
         }
 
-        public static MyList<T> operator - (MyList<T> list1, MyList<T> list2)
+        //COMPLETELY WRONG AND BROKEN
+        public static MyList<T> operator -(MyList<T> list1, MyList<T> list2)
         {
-            return list1;
+            MyList<T> SubtractedList = new MyList<T>();
+
+            SubtractedList.count = list1.count - list2.count;
+
+            for (int i = list1.count; i > 0; i--)
+            {
+                for (int j = list2.count; i > 0; j++)
+                {
+                    if (list1[i].Equals(list2[j]))
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                        SubtractedList.Add(list1[i]);
+                    }
+                }
+                            
+            }
+            return SubtractedList;
         }
 
         public MyList<T> Zip(MyList<T> list1, MyList<T> list2)
@@ -168,17 +179,5 @@ namespace CustomList
             }
             return zipList;
         }
-
-        //private T[] SizeCheck(MyList<T> list1, MyList<T> list2)
-        //{
-        //    if (list1.count > list2.count)
-        //    {
-        //        list1 = firstList;
-        //    }
-        //    else if (list2.count > list1.count)
-        //    {
-        //        list2 = firstList;
-        //    }
-        //}
     }
 }
