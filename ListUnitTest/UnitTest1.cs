@@ -349,6 +349,39 @@ namespace ListUnitTest
         }
 
         [TestMethod]
+        public void Add_Operator_AddsDifferentlySizedLists()
+        {
+            //Arrange
+            MyList<int> list1 = new MyList<int>() { 1, 2, 3 };
+            MyList<int> list2 = new MyList<int>() { 4, 5, 6, 7, 8, 9 };
+            MyList<int> expectedResult = new MyList<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+
+            //Act
+            MyList<int> actualResult = list1 + list2;
+
+            //Assert
+            Assert.AreEqual(expectedResult[8], actualResult[8]);
+
+        }
+
+        [TestMethod]
+        public void Subtract_Operator_SubtractsListFromList()
+        {
+            //Arrange
+            MyList<int> list1 = new MyList<int>() { 1, 2, 3, 4, 5, 6 };
+            MyList<int> list2 = new MyList<int>() { 4, 5, 6 };
+            MyList<int> expectedResult = new MyList<int> { 1, 2, 3 };
+
+            //Act
+            MyList<int> actualResult = list1 - list2;
+
+
+            //Assert
+            Assert.AreEqual(expectedResult[3], actualResult[3]);
+
+        }
+
+        [TestMethod]
         public void Zip_TwoLists_ZipsTwoListsTogether()
         {
             //Arrange
