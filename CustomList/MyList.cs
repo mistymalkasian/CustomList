@@ -137,13 +137,14 @@ namespace CustomList
 
             AddedList.count = list1.count + list2.count;
             
-            for (int i = 0; i < AddedList.count; i++)
+            for (int i = 0; i < list1.count; i++)
             {
-                list1[i] = AddedList[i];
+                AddedList[i] = list1[i];
 
-                for (int j = 0; j < AddedList.count; j++)
+                for (int j = 0 + i; j < AddedList.count + i; j++)
                 {
-                    list2[j] = AddedList[i + 1];
+                   AddedList[i + list2.count] = list2[j];
+                   break;
                 }
             }
             return AddedList;
