@@ -307,7 +307,7 @@ namespace ListUnitTest
         {
             //Arrange
             MyList<int> newList = new MyList<int>() { 1, 2, 3 };
-            MyList<string> expectedResult = new MyList<string>(){"1 2 3"};
+            string expectedResult = "1 2 3";
 
             //Act
             string actualResult = newList.ToString();
@@ -317,7 +317,36 @@ namespace ListUnitTest
          }
 
         [TestMethod]
-        public void Add_Operator_AddTwoLists()
+        public void Return_String_ReturnsStringifiedStrings()
+        {
+            //Arrange
+            MyList<string> newList = new MyList<string>() { "strawberry", "fields", "forever" };
+            string expectedResult = "strawberry fields forever";
+
+            //Act
+            string actualResult = newList.ToString();
+
+            //Assert
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+        [TestMethod]
+        public void Return_String_ReturnsStringifiedBools()
+        {
+            //Arrange
+            MyList<bool> newList = new MyList<bool>() { true, true, true };
+            string expectedResult = "true true true";
+
+            //Act
+            string actualResult = newList.ToString();
+
+            //Assert
+            Assert.AreEqual(expectedResult, actualResult);
+        }
+
+
+        [TestMethod]
+        public void Plus_Operator_AddsTwoLists()
         {
             //Arrange
             MyList<int> list1 = new MyList<int>() { 1, 2, 3 };
@@ -332,7 +361,7 @@ namespace ListUnitTest
         }
 
         [TestMethod]
-        public void Add_Operator_AddsDifferentlySizedLists()
+        public void Plus_Operator_AddsDifferentlySizedLists()
         {
             //Arrange
             MyList<int> list1 = new MyList<int>() { 1, 2, 3 };
@@ -348,12 +377,11 @@ namespace ListUnitTest
         }
 
         [TestMethod]
-        public void Subtract_Operator_SubtractsListFromList()
+        public void Minus_Operator_SubtractsListFromList()
         {
             //Arrange
             MyList<int> list1 = new MyList<int>() { 1, 2, 3, 4, 5, 6 };
             MyList<int> list2 = new MyList<int>() { 4, 5, 6 };
-            //MyList<int> expectedResult = new MyList<int> { 1, 2, 3 };
 
             //Act
             int expectedResult = 3;

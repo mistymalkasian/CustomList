@@ -91,14 +91,14 @@ namespace CustomList
           
             for (int i = 0; i < Count; i++)
             {
-                if (Compare(data[i], (value)) == false)
-                {
-                    AddToNewArray(data, newData);
-                }
-                else
+                if (Compare(data[i], (value))) //(data[i].Equals(value)) 
                 {
                     count--;
                     continue;
+                }
+                else
+                {
+                    AddToNewArray(data, newData); 
                 }
             }
             data = newData;
