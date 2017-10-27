@@ -113,13 +113,12 @@ namespace CustomList
         }
         public override string ToString()
         {
-            StringBuilder stringBuilder = new StringBuilder();
-
             foreach (T value in data)
             {
-                string concatenated = string.Join(",", data);
-                stringBuilder.AppendLine(value);
-            }   
+                value.ToString();
+            }
+            string concatenatedList = string.Join(" ", data);
+            return concatenatedList;
         }
 
         public static MyList<T> operator +(MyList<T> list1, MyList<T> list2)
@@ -141,8 +140,7 @@ namespace CustomList
             }
             return AddedList;
         }
-
-        //COMPLETELY WRONG AND BROKEN
+        //COMPLETELY WRONG
         public static MyList<T> operator -(MyList<T> list1, MyList<T> list2)
         {
             MyList<T> SubtractedList = new MyList<T>();

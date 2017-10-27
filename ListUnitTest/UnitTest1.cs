@@ -197,19 +197,6 @@ namespace ListUnitTest
             Assert.AreEqual(newList.Count, 0);
         }
 
-        //[TestMethod]
-        //public void Remove_NonexistentObject_ThrowsException()
-        //{
-        //    //Arrange
-        //    MyList<int> newList = new MyList<int>();
-
-        //    //Act
-        //    newList.Remove(10);
-
-        //    //Assert
-        //    Assert;
-        //}
-
         [TestMethod]
         public void Remove_String_RemovesStringFromList()
         {
@@ -316,19 +303,18 @@ namespace ListUnitTest
         }
 
         [TestMethod]
-        public void Return_String_ReturnsStringifiedInt()
+        public void Return_String_ReturnsStringifiedInts()
         {
             //Arrange
             MyList<int> newList = new MyList<int>() { 1, 2, 3 };
+            MyList<string> expectedResult = new MyList<string>(){"1 2 3"};
 
             //Act
-            newList.ToString();
+            string actualResult = newList.ToString();
 
             //Assert
-            Assert.AreEqual(newList[0], "1");
-        }
-
-        //OTHER TOSTRING TESTS HERE
+            Assert.AreEqual(expectedResult, actualResult);
+         }
 
         [TestMethod]
         public void Add_Operator_AddTwoLists()
